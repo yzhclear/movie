@@ -1,0 +1,30 @@
+{
+  "name": "movie",
+  "version": "1.0.0",
+  "description": "movie trailer",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yzhclear/movie.git"
+  },
+  "keywords": [
+    "movie",
+    "trailer"
+  ],
+  "author": "yzhclear",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yzhclear/movie/issues"
+  },
+  "homepage": "https://github.com/yzhclear/movie#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "koa": "^2.6.1",
+    "koa-views": "^6.1.4",
+    "pug": "^2.0.3"
+  }
+}

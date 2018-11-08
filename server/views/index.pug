@@ -1,0 +1,91 @@
+extends ./layouts/default
+
+block title
+    title Koa 首页
+
+block content
+    include ./includes/header
+    
+    .container-fluid
+        .sidebar
+        .content
+            .row
+                .row
+                    .col-md-6
+                        .card
+                            img.card-img-top(src='https://y.gtimg.cn/music/photo_new/T002R300x300M000003cKIKZ1J4Yyu.jpg',
+                            data-video='http://120.210.222.141/vcloud1049.tc.qq.com/1049_M0115400003xf2Ly1IPxm41001575852.f40.mp4?vkey=60F16B7A3FD187C40431B20FA5B6A0C7E8B81048CB42E2EAEC8DEFFBF43E815821B39F0734C3CB7AC6E6C6ACABAEE5D33520BECD493B1F73B42603BDEE64ED90C3F024A90417293C6D04A27E7B173C6FB1D1D7491AC51C86')
+                            .card-body
+                                h4.card-title 这是电影标题
+                                p.card-desc 这是电影描述
+                            .card-footer
+                                small.text-muted 1 天前更新
+                    .col-md-6
+                        .card
+                            img.card-img-top(src='https://y.gtimg.cn/music/photo_new/T002R300x300M000003cKIKZ1J4Yyu.jpg',
+                            data-video='http://120.210.222.141/vcloud1049.tc.qq.com/1049_M0115400003xf2Ly1IPxm41001575852.f40.mp4?vkey=60F16B7A3FD187C40431B20FA5B6A0C7E8B81048CB42E2EAEC8DEFFBF43E815821B39F0734C3CB7AC6E6C6ACABAEE5D33520BECD493B1F73B42603BDEE64ED90C3F024A90417293C6D04A27E7B173C6FB1D1D7491AC51C86')
+                            .card-body
+                                h4.card-title 这是电影标题
+                                p.card-desc 这是电影描述
+                            .card-footer
+                                small.text-muted 1 天前更新
+                .row
+                    .col-md-6
+                        .card
+                            img.card-img-top(src='https://y.gtimg.cn/music/photo_new/T002R300x300M000003cKIKZ1J4Yyu.jpg',
+                            data-video='http://120.210.222.141/vcloud1049.tc.qq.com/1049_M0115400003xf2Ly1IPxm41001575852.f40.mp4?vkey=60F16B7A3FD187C40431B20FA5B6A0C7E8B81048CB42E2EAEC8DEFFBF43E815821B39F0734C3CB7AC6E6C6ACABAEE5D33520BECD493B1F73B42603BDEE64ED90C3F024A90417293C6D04A27E7B173C6FB1D1D7491AC51C86')
+                            .card-body
+                                h4.card-title 这是电影标题
+                                p.card-desc 这是电影描述
+                            .card-footer
+                                small.text-muted 1 天前更新
+                    .col-md-6
+                        .card
+                            img.card-img-top(src='https://y.gtimg.cn/music/photo_new/T002R300x300M000003cKIKZ1J4Yyu.jpg',
+                            data-video='http://120.210.222.141/vcloud1049.tc.qq.com/1049_M0115400003xf2Ly1IPxm41001575852.f40.mp4?vkey=60F16B7A3FD187C40431B20FA5B6A0C7E8B81048CB42E2EAEC8DEFFBF43E815821B39F0734C3CB7AC6E6C6ACABAEE5D33520BECD493B1F73B42603BDEE64ED90C3F024A90417293C6D04A27E7B173C6FB1D1D7491AC51C86')
+                            .card-body
+                                h4.card-title 这是电影标题
+                                p.card-desc 这是电影描述
+                            .card-footer
+                                small.text-muted 1 天前更新
+    #myModal.modal.fade.bd-example-modal-lg(tabindex="-1", role="dialog", aria-labelledby="myLargeModalLabel", aria-hidden="true")
+        .modal-dialog.modal-lg
+            #videoModal.modal-content
+                                
+    include ./includes/script
+    
+    script.
+        var player = null
+        
+        $(document).ready(function () {
+            $('#myModal').on('hidden.bs.modal', function (e) {
+                if (player && player.pause) player.pause() 
+            })
+        
+            $('.card-img-top').click(function (e) {
+                var video = $(this).data('video')
+                var image = $(this).attr('src')
+                
+                console.log($('#myModal'))
+                
+                $('#myModal').modal('show')
+                
+                if (!player) {
+                    player = new DPlayer({
+                        container: document.getElementById('videoModal'),
+                        screenshot: true,
+                        video: {
+                            url: video,
+                            pic: image,
+                            thumbnails: image
+                        }
+                    })
+                } else {
+                    player.switchVideo({
+                        url: video,
+                        pic: image,
+                        type: 'auto'
+                    })
+                }
+            })
+        })
