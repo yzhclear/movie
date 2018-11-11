@@ -23,8 +23,10 @@
   "homepage": "https://github.com/yzhclear/movie#readme",
   "dependencies": {
     "ejs": "^2.6.1",
+    "glob": "^7.1.3",
     "koa": "^2.6.1",
     "koa-views": "^6.1.4",
+    "mongoose": "^5.3.11",
     "pug": "^2.0.3",
     "puppeteer": "^1.10.0",
     "request": "^2.88.0",
